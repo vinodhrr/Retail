@@ -1,0 +1,5 @@
+export const USERNAME_COMPLIANCE_ERROR = "Username must be 8 characters long"
+export const EMAIL_COMPLIANCE_ERROR = "Email ID entered is incorrect"
+export const PASSWORD_LENGTH_ERROR = "Password Character should range from 6 to 12 characters"
+export const PASSWORD_COMPLIANCE_ERROR = "Password should include one UpperCase and a symbol"
+export const PASSWORD_MISMATCH_ERROR = "Password does not match"

@@ -11,8 +11,6 @@
     /* display: none; */
 }
 
-
-
 .SideMenu:active{
     height: 700px;
     width: 300px;
@@ -24,12 +22,8 @@
 
 .Button{
     border: none;
-    color: green;
+    color: lightblue;
     background: none;
     padding: 30px;
-}
-
-.Button{
     outline: none;
-
 }
