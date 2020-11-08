@@ -1,8 +1,8 @@
 import './App.css';
-import Login from './Login/Login'
-import SideMenu from './SideMenu/SideMenu'
+import Login from './containers/Login/Login'
+import SideMenu from './components/SideMenu/SideMenu'
 import {Route,Switch,Link,BrowserRouter,withRouter} from 'react-router-dom'
-import Signup from './Signup/Signup'
+import Signup from './containers/Signup/Signup'
 
 function App() {
   return (
