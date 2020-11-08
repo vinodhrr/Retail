@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import * as SignupCss from './Signup.module.css'
-import Instruction from '../components/Signup/Instruction'
-import * as CONSTANTS from '../containers/constants/indexConstants'
+import Instruction from '../../components/Signup/Instruction'
+import * as CONSTANTS from '../constants/indexConstants'
 
 const Signup = (props)=> {
     let [username,setUsername] = useState({username : null, error : null});
@@ -36,9 +36,10 @@ const Signup = (props)=> {
         return re.test(String(email))
     }
 
-    // const validatePassword = password => {
-    //     const re=/[?:A-Z\-\@\$\#]/
-    // }
+    const validatePassword = password => {
+        const re=/(([A-Z]+[a-z]+[0-9]+[!@#$%^&*()]+))|(([a-z]+[A-Z]+[0-9]+[!@#$%^&*()]+))|(([0-9]+[a-z]+[A-Z]+[!@#$%^&*()]+))/g
+        return re.test(password)
+    }
 
     const onUsernameChange = event => {
         let error = null
@@ -61,11 +62,12 @@ const Signup = (props)=> {
     const onPasswor1Change = event => {
         let error = null
         let inputString=event.target.value
-        console.log(inputString.length)
         if(inputString.length < CONSTANTS.SIGNUP.PASSWORD_MINLENGTH || inputString.length > CONSTANTS.SIGNUP.PASSWORD_MAXLENGTH)
             error = CONSTANTS.ERRORS.PASSWORD_LENGTH_ERROR
         if(inputString.length === CONSTANTS.SIGNUP.USERNAME_DEFAULT_LENGTH)
             error = null
+        if(!validatePassword(inputString))
+            error = CONSTANTS.ERRORS.PASSWORD_COMPLIANCE_ERROR
         if(password2.password2 !== null && password2.password2 !== inputString)
             error = CONSTANTS.ERRORS.PASSWORD_MISMATCH_ERROR
         setPassword1({password1 : inputString, error : error})
@@ -78,6 +80,8 @@ const Signup = (props)=> {
             error = CONSTANTS.ERRORS.PASSWORD_LENGTH_ERROR
         if(inputString.length === CONSTANTS.SIGNUP.USERNAME_DEFAULT_LENGTH)
             error = null
+        if(!validatePassword(inputString))
+            error = CONSTANTS.ERRORS.PASSWORD_COMPLIANCE_ERROR
         if(password1.password1 !== null && password1.password1 !== inputString)
             error = CONSTANTS.ERRORS.PASSWORD_MISMATCH_ERROR
         setPassword2({password2 : inputString, error : error})
