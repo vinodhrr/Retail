@@ -8,7 +8,7 @@ const Signup = (props)=> {
     let [email,setEmail] = useState({email : null, error : null});
     let [password1,setPassword1] = useState({password1 : null, error : null});
     let [password2,setPassword2] = useState({password2 : null, error : null});
-    let usernameClass,emailClass,password1Class,password2Class
+    let usernameClass,emailClass,password1Class,password2Class;
     let displayError = null
 
     usernameClass = emailClass = password1Class = password2Class = SignupCss.Input
@@ -22,45 +22,65 @@ const Signup = (props)=> {
     if(password2.error != null)
         password2Class+=" "+SignupCss.onError
 
+    displayError = username.error || email.error || password1.error || password2.error
+
+    console.log(displayError)
+
     const sendSignUpDetails = event => {
         event.preventDefault();
+        
     }
 
     const validateEmail = email => {
-        const re=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        return re.test(String(email).toLowerCase)
+        const re=/(^[a-z0-9]*)+@+(?:[a-z]*\.[a-z]+)/i;
+        return re.test(String(email))
     }
+
+    // const validatePassword = password => {
+    //     const re=/[?:A-Z\-\@\$\#]/
+    // }
 
     const onUsernameChange = event => {
         let error = null
-        if(event.target.value.length < CONSTANTS.SIGNUP.USERNAME_LENGTH)
+        let inputString=event.target.value
+        if(inputString.length < CONSTANTS.SIGNUP.USERNAME_LENGTH)
             error = CONSTANTS.ERRORS.USERNAME_COMPLIANCE_ERROR
-        setUsername({username : event.target.value, error : error})
+        if(inputString.length === CONSTANTS.SIGNUP.USERNAME_DEFAULT_LENGTH)
+            error = null
+        setUsername({username : inputString, error : error})
     }
 
     const onEmailChange = event => {
         let error = null
-        if(!validateEmail(event.target.value))
+        let inputString=event.target.value
+        if(!validateEmail(inputString))
             error = CONSTANTS.ERRORS.EMAIL_COMPLIANCE_ERROR
-        setEmail({email : event.target.value, error : error})
+        setEmail({email : inputString, error : error})
     }
 
     const onPasswor1Change = event => {
         let error = null
-        if(event.target.value.length < 6)
+        let inputString=event.target.value
+        console.log(inputString.length)
+        if(inputString.length < CONSTANTS.SIGNUP.PASSWORD_MINLENGTH || inputString.length > CONSTANTS.SIGNUP.PASSWORD_MAXLENGTH)
             error = CONSTANTS.ERRORS.PASSWORD_LENGTH_ERROR
-        if(password2.password2 !== event.target.value)
+        if(inputString.length === CONSTANTS.SIGNUP.USERNAME_DEFAULT_LENGTH)
+            error = null
+        if(password2.password2 !== null && password2.password2 !== inputString)
             error = CONSTANTS.ERRORS.PASSWORD_MISMATCH_ERROR
-        setPassword1({password1 : event.target.value, error : error})
+        setPassword1({password1 : inputString, error : error})
     }
 
     const onPasswor2Change = event => {
         let error = null
-        if(event.target.value.length < 6)
+        let inputString=event.target.value
+        if(inputString.length < CONSTANTS.SIGNUP.PASSWORD_MINLENGTH || inputString.length > CONSTANTS.SIGNUP.PASSWORD_MAXLENGTH)
             error = CONSTANTS.ERRORS.PASSWORD_LENGTH_ERROR
-        if(password1.password1 !== event.target.value)
+        if(inputString.length === CONSTANTS.SIGNUP.USERNAME_DEFAULT_LENGTH)
+            error = null
+        if(password1.password1 !== null && password1.password1 !== inputString)
             error = CONSTANTS.ERRORS.PASSWORD_MISMATCH_ERROR
-        setPassword2({password2 : event.target.value, error : error})
+        setPassword2({password2 : inputString, error : error})
     }
 
     return(
@@ -97,9 +117,9 @@ const Signup = (props)=> {
             className={password2Class}
             onChange={(event)=>{onPasswor2Change(event)}}/>
 
-            <button disabled={!password2.error} className={SignupCss.Submit}>Signup</button>
+            <button disabled={displayError!==null ? true : false} className={SignupCss.Submit}>Signup</button>
 
-            <div>{displayError}</div>
+            <div>{displayError} {}</div>
             </form>
         </div>
         </div>

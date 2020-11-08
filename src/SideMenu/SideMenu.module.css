@@ -2,10 +2,7 @@
     height: 700px;
     width: 300px;
     background-color: rgb(2, 4, 24);
-    font: bolder;
     color: blanchedalmond;
-    font-style: italic;
-    font-family: fantasy;
     float: left;
     
     /* display: none; */
@@ -26,4 +23,31 @@
     background: none;
     padding: 30px;
     outline: none;
+}
+
+@media screen and (max-width : 400px){
+    .SideMenu{
+        height: 635px;
+        width: 100px;
+    }
+    .SideMenu:active{
+        height: 635px;
+        width: 100px;
+        /* display: none; */
+    }
+    .Button{
+        border: none;
+        color: lightgrey;
+        background: none;
+        padding: 10px;
+        outline: none;
+    }
+    .SideMenu:active{
+        height: 350px;
+        width: 100px;
+        background-color: rgb(2, 4, 24);
+        font: bolder;
+        color: blanchedalmond;
+        /* display: none; */
+    }
 }

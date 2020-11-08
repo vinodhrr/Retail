@@ -1,3 +1,5 @@
+export const USERNAME_DEFAULT_LENGTH = 0
+export const PASSWORD_DEFAULT_LENGTH = 0
 export const USERNAME_LENGTH = 6
 export const PASSWORD_MINLENGTH = 6
 export const PASSWORD_MAXLENGTH = 12

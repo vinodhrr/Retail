@@ -3,3 +3,9 @@
     font-style: italic;
     background-color: lightblue;
 }
+
+@media screen and (max-width:400px){
+    .Instruction{
+        font-size: smaller;
+    }
+}

@@ -26,7 +26,6 @@
 
 .Input:hover{
     border: 2px solid grey;
-    border-width: 4px;
 }
 
 .img{
@@ -46,3 +45,43 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+@media screen and (max-width : 400px){
+    .Login{
+        height: 300px;
+        width: 200px;
+        border: 1px solid grey;
+        box-shadow: 1px 1px 1px grey;
+        color: red;
+        padding: 10px;
+        margin-top: 5%;
+        margin-right: 10%;
+        text-align: center;
+        display: block;
+        float: right;
+    }
+    .img{
+        margin-left: auto;
+        margin-top: 50px;
+        height: 50px;
+        width: 50px;
+    }
+    .Input{
+        color: blue;
+        font-weight: bold;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .Submit{
+        margin-top: 25px;
+        background-color: #2d21d1;
+        border-radius: 10px;
+        color: lightgreen;
+        height: 20px;
+        width: 50px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+}
