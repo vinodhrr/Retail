@@ -4,10 +4,10 @@ import {withRouter} from 'react-router-dom'
 
 class SideMenu extends React.Component{
     loginListener = event => {
-        this.props.history.push(this.props.match.url + "login/")
+        this.props.history.push("/login")
     }
     signupListener = event => {
-        this.props.history.push(this.props.match.url + "signup/")
+        this.props.history.push("/signup/")
     }
     render(){
         return(

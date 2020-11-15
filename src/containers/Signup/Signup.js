@@ -24,7 +24,7 @@ const Signup = (props)=> {
 
     displayError = username.error || email.error || password1.error || password2.error
 
-    console.log(displayError)
+    // console.log(displayError)
 
     const sendSignUpDetails = event => {
         event.preventDefault();
