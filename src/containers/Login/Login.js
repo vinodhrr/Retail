@@ -38,7 +38,7 @@ const Login = props => {
         .then(
         response=>{
             // console.log("response",response)
-            props.history.replace(props.match.url + "/inventory/");
+            props.history.replace(props.match.url + "/inventory");
         })
         .catch(error=>{
             setError({error: CONSTANTS.ERRORS.LOGIN_ERROR})
